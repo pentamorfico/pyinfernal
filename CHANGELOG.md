@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 [Unreleased]: https://github.com/althonos/pyinfernal/compare/v0.1.1...HEAD
 
+### Added
+- Expose the Infernal consensus structure annotation through
+  `Alignment.structure`.
+
 
 ## [v0.1.1] - 2026-03-31
 [v0.1.1]: https://github.com/althonos/pyinfernal/compare/v0.1.0...v0.1.1
