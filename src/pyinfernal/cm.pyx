@@ -1534,6 +1534,17 @@ cdef class Alignment:
         return PyUnicode_DecodeASCII(self._ad.model, self._ad.N, NULL)
 
     @property
+    def structure(self):
+        """`str`: The consensus secondary structure annotation of the alignment.
+
+        The annotation is returned in the WUSS notation used by Infernal's
+        command-line output (the ``CS`` alignment line).
+        """
+        assert self._ad != NULL
+        assert self._ad.csline != NULL
+        return PyUnicode_DecodeASCII(self._ad.csline, self._ad.N, NULL)
+
+    @property
     def posterior_probabilities(self):
         """`str`: Posterior probability annotation of the alignment.
         """
