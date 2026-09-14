@@ -64,6 +64,15 @@ class _TestSearch(metaclass=abc.ABCMeta):
             self.assertEqual(hit.alignment.cm_to, int(fields[6]))
             self.assertEqual(hit.alignment.target_from, int(fields[7]))
             self.assertEqual(hit.alignment.target_to, int(fields[8]))
+            structure = hit.alignment.structure
+            self.assertIsInstance(structure, str)
+            self.assertEqual(len(structure), len(hit.alignment.target_sequence))
+            displayed_structure = "".join(
+                line.rsplit("CS", 1)[0].split()[-1]
+                for line in str(hit.alignment).splitlines()
+                if line.rstrip().endswith("CS")
+            )
+            self.assertEqual(structure, displayed_structure)
             self.assertEqual(hit.strand, fields[9])
             # self.assertEqual(hit.trunc, fields[10])
             # self.assertEqual(hit.pipeline_pass, fields[11])
